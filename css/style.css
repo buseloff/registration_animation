@@ -175,3 +175,12 @@ button {
     transform: scale(0.4) translate(0%, 30%);
   }
 }
+
+@media screen and (max-width: 1500px) {
+ 
+
+  .line-svg {
+    width: 100%;
+  }
+
+}

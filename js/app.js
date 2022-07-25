@@ -169,18 +169,30 @@ const tl3 = gsap.timeline({
 
 button.addEventListener("click", (e) => {
   e.preventDefault();
-  tl3.to(".contact-right, .contact-left", {
-    y: 30,
-    opacity: 0,
-    pointerEvents: "none",
-  });
-  tl3.to("form", { scale: 0.8 }, "<");
-  tl3.fromTo(".submitted", { opacity: 0, y: 30 }, { opacity: 1, y: 0 });
-  //Hand wave
-  gsap.set("#hand", { transformOrigin: "left" });
-  gsap.fromTo(
-    "#hand",
-    { rotation: 0, y: 0 },
-    { rotation: -10, y: 2, ease: "elastic(3,0.3)", duration: 2, delay: 1 }
-  );
+  const inputName = document.querySelector(".input-name");
+  const inputEmail = document.querySelector(".input-email");
+  const inputNumber = document.querySelector(".input-number");
+
+  if (
+    inputName.value.length > 2 &&
+    validateEmail(inputEmail.value) &&
+    validatePhone(inputNumber.value)
+  ) {
+    tl3.to(".contact-right, .contact-left", {
+      y: 30,
+      opacity: 0,
+      pointerEvents: "none",
+    });
+    tl3.to("form", { scale: 0.8 }, "<");
+    tl3.fromTo(".submitted", { opacity: 0, y: 30 }, { opacity: 1, y: 0 });
+    //Hand wave
+    gsap.set("#hand", { transformOrigin: "left" });
+    gsap.fromTo(
+      "#hand",
+      { rotation: 0, y: 0 },
+      { rotation: -10, y: 2, ease: "elastic(3,0.3)", duration: 2, delay: 1 }
+    );
+  } else {
+    alert("Input valid data!!!");
+  }
 });
